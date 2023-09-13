@@ -1,11 +1,9 @@
 #include "reduce_fraction.h"
-#include <algorithm>
 
-int64_t gcd (int64_t a, int64_t b) {
+int64_t gcd(int64_t a, int64_t b) {
 	if (b == 0) {
         return a;
-    }
-	else {
+    } else {
         return gcd (b, a % b);
     }
 }
