@@ -14,7 +14,7 @@ bool ValidatePassword(const std::string& password) {
     if (password.size() >= lower && password.size() <= greater) {
         checked_size = true;
     }
-    for (auto character: password) {
+    for (auto character : password) {
         if (character >= 'A' && character <= 'Z') {
             has_Alpha = 1;
         } else if (character >= 'a' && character <= 'z') {
