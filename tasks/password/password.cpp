@@ -3,8 +3,8 @@
 
 constexpr size_t LOWER = 8;
 constexpr size_t GREATER = 14;
-constexpr char L_ASCII = '!';
-constexpr char R_ASCII = '~';
+constexpr char LA = '!';
+constexpr char RA = '~';
 
 bool ValidatePassword(const std::string& password) {
     int64_t has_alpha = 0;
@@ -24,7 +24,7 @@ bool ValidatePassword(const std::string& password) {
         } else {
             has_extra = 1;
         }
-        if (character < L_ASCII || character > R_ASCII) {
+        if (character < LA || character > RA) {
             return false;
         }
     }
