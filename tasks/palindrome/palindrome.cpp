@@ -15,7 +15,9 @@ bool IsPalindrome(const std::string& str) {
             answer = false;
         }
         l++;
-        r--;
+        if (r > 0) {
+            r--;
+        }
     }
     return answer;
 }
