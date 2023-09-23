@@ -1,10 +1,9 @@
 #include "palindrome.h"
-#include <cstdint>
 
 bool IsPalindrome(const std::string& str) {
     bool answer = true;
-    int64_t l = 0;
-    int64_t r = static_cast<int64_t>(str.size()) - 1;
+    size_t l = 0;
+    size_t r = str.size() - 1;
     while (l < r) {
         while (l < str.size() && str[l] == ' ') {
             l++;
