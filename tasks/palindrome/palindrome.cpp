@@ -1,6 +1,9 @@
 #include "palindrome.h"
 
 bool IsPalindrome(const std::string& str) {
+    if (str.size() == 0) {
+        return false;   
+    }
     bool answer = true;
     size_t l = 0;
     size_t r = str.size() - 1;
