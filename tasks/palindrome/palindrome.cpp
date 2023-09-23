@@ -2,7 +2,7 @@
 
 bool IsPalindrome(const std::string& str) {
     if (str.empty()) {
-        return false;
+        return true;
     }
     bool answer = true;
     size_t l = 0;
