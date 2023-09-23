@@ -1,14 +1,7 @@
 #include "reduce_fraction.h"
-
-int64_t Gcd(int64_t a, int64_t b) {
-    if (b == 0) {
-        return a;
-    } else {
-        return Gcd(b, a % b);
-    }
-}
+#include <numeric>
 
 int64_t ReduceFraction(int64_t numerator, int64_t denominator) {
-    int64_t g = Gcd(numerator, denominator);
+    int64_t g = std::gcd(numerator, denominator);
     return (numerator + denominator) / g;
 }
