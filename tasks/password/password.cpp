@@ -7,10 +7,10 @@ constexpr char LA = '!';
 constexpr char RA = '~';
 
 bool ValidatePassword(const std::string& password) {
-    int64_t has_alpha = 0;
-    int64_t has_clpha = 0;
-    int64_t has_digit = 0;
-    int64_t has_extra = 0;
+    bool has_alpha = 0;
+    bool has_clpha = 0;
+    bool has_digit = 0;
+    bool has_extra = 0;
     if (password.size() < LOWER || password.size() > GREATER) {
         return false;
     }
