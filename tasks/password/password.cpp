@@ -5,7 +5,7 @@ constexpr size_t LOWER = 8;
 constexpr size_t GREATER = 14;
 constexpr char LA = '!';
 constexpr char RA = '~';
-constexpr int MINIMUM_CLASSES = 3;
+constexpr int MinimumClasses = 3;
 
 bool ValidatePassword(const std::string& password) {
     bool has_alpha = false;
@@ -29,5 +29,5 @@ bool ValidatePassword(const std::string& password) {
             return false;
         }
     }
-    return (has_clpha + has_alpha + has_digit + has_extra >= MINIMUM_CLASSES);
+    return (has_clpha + has_alpha + has_digit + has_extra >= MinimumClasses);
 }
