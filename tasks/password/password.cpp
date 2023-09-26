@@ -7,22 +7,22 @@ constexpr char LA = '!';
 constexpr char RA = '~';
 
 bool ValidatePassword(const std::string& password) {
-    bool has_alpha = 0;
-    bool has_clpha = 0;
-    bool has_digit = 0;
-    bool has_extra = 0;
+    bool has_alpha = false;
+    bool has_clpha = false;
+    bool has_digit = false;
+    bool has_extra = false;
     if (password.size() < LOWER || password.size() > GREATER) {
         return false;
     }
     for (auto character : password) {
         if (character >= 'A' && character <= 'Z') {
-            has_clpha = 1;
+            has_clpha = true;
         } else if (character >= 'a' && character <= 'z') {
-            has_alpha = 1;
+            has_alpha = true;
         } else if (character >= '0' && character <= '9') {
-            has_digit = 1;
+            has_digit = true;
         } else {
-            has_extra = 1;
+            has_extra = true;
         }
         if (character < LA || character > RA) {
             return false;
