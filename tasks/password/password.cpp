@@ -1,4 +1,5 @@
 #include "password.h"
+
 #include <cstdint>
 
 constexpr size_t LOWER = 8;
