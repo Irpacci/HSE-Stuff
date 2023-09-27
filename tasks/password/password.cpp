@@ -2,10 +2,10 @@
 
 #include <cstdint>
 
-constexpr size_t LOWER = 8;
-constexpr size_t GREATER = 14;
-constexpr char LA = '!';
-constexpr char RA = '~';
+constexpr size_t LowerSize = 8;
+constexpr size_t GreaterSize = 14;
+constexpr char LeftAscii = '!';
+constexpr char RightAscii = '~';
 constexpr int MinimumClasses = 3;
 
 bool ValidatePassword(const std::string& password) {
@@ -13,7 +13,7 @@ bool ValidatePassword(const std::string& password) {
     bool has_clpha = false;
     bool has_digit = false;
     bool has_extra = false;
-    if (password.size() < LOWER || password.size() > GREATER) {
+    if (password.size() < LowerSize || password.size() > GreaterSize) {
         return false;
     }
     for (auto character : password) {
@@ -26,7 +26,7 @@ bool ValidatePassword(const std::string& password) {
         } else {
             has_extra = true;
         }
-        if (character < LA || character > RA) {
+        if (character < LeftAscii || character > RightAscii) {
             return false;
         }
     }
