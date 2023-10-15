@@ -3,7 +3,7 @@
 int64_t CountPassports(const std::vector<int>& provinces) {
     int64_t answer = 0;
     std::multiset<int64_t> setOfAll;
-    for (int x: provinces) {
+    for (int x : provinces) {
         setOfAll.insert(x);
     }
     while (setOfAll.size() > 1) {
