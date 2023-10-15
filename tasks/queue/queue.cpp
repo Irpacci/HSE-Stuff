@@ -17,9 +17,9 @@ void Queue::Push(int32_t value) {
         tail_ = front_;
         return;
     }
-    Node* newNode = new Node(value, nullptr);
-    tail_->next = newNode;
-    tail_ = newNode;
+    Node* new_node = new Node(value, nullptr);
+    tail_->next = new_node;
+    tail_ = new_node;
 }
 
 int32_t Queue::Size() const {
