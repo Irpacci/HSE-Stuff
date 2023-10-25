@@ -11,7 +11,7 @@ ScoreTable GetScoredStudents(const Events& events, time_t score_time) {
         events_order.emplace_back(events[i].time, i);
     }
     std::map<std::string, std::map<std::string, std::pair<bool, bool>>> 
-        tasks; //if last commit is success/if no open merges
+        tasks;  // if last commit is success/if no open merges
     sort(events_order.begin(), events_order.end());
     for (std::pair<time_t, size_t> event : events_order) {
         const Event& current_event = events[event.second];
@@ -36,7 +36,7 @@ ScoreTable GetScoredStudents(const Events& events, time_t score_time) {
         for (auto task_info : tasks_pair.second) {
             if (task_info.second.first && !task_info.second.second) {
                 answer[tasks_pair.first].insert(task_info.first);
-            } 
+            }
         }
     }
     return answer;
