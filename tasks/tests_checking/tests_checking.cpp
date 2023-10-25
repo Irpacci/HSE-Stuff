@@ -7,7 +7,7 @@ std::vector<std::string> StudentsOrder(const std::vector<StudentAction>& student
     std::vector<std::string> answer;
     std::deque<std::string> listofall;
     for (auto action : student_actions) {
-        if(action.side == Side::Top) {
+        if (action.side == Side::Top) {
             listofall.push_front(action.name);
         } else {
             listofall.push_back(action.name);
