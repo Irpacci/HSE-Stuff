@@ -20,16 +20,16 @@ ScoreTable GetScoredStudents(const Events& events, time_t score_time) {
         }
         switch (current_event.event_type) {
             case EventType::CheckFailed:
-                tasks[current_event.student_name][current_event.task_name].first = 0;
+                tasks[current_event.student_name][current_event.task_name].first = false;
                 break;
             case EventType::CheckSuccess:
-                tasks[current_event.student_name][current_event.task_name].first = 1;
+                tasks[current_event.student_name][current_event.task_name].first = true;
                 break;
             case EventType::MergeRequestOpen:
-                tasks[current_event.student_name][current_event.task_name].second = 1;
+                tasks[current_event.student_name][current_event.task_name].second = true;
                 break;
             case EventType::MergeRequestClosed:
-                tasks[current_event.student_name][current_event.task_name].second = 0;
+                tasks[current_event.student_name][current_event.task_name].second = false;
         }
     }
     for (auto tasks_pair : tasks) {
