@@ -9,8 +9,8 @@ int32_t DAYS_IN_YEAR = 365;
 bool isLess(Student a, Student b, SortKind sortKind) {
     std::pair<std::string, std::string> a_name = {a.last_name, a.name};
     std::pair<std::string, std::string> b_name = {b.last_name, b.name};
-    time_t a_date = a.birth_date.day + a.birth_date.month * DAYS_IN_MONTH + a.birth_date.year * DAYS_IN_YEAR;
-    time_t b_date = b.birth_date.day + b.birth_date.month * DAYS_IN_MONTH + b.birth_date.year * DAYS_IN_YEAR;
+    int64_t a_date = a.birth_date.day + a.birth_date.month * DAYS_IN_MONTH + a.birth_date.year * DAYS_IN_YEAR;
+    int64_t b_date = b.birth_date.day + b.birth_date.month * DAYS_IN_MONTH + b.birth_date.year * DAYS_IN_YEAR;
     if (sortKind == SortKind::Name) {
         return std::make_pair(a_name, a_date) < std::make_pair(b_name, b_date);
     } else {
