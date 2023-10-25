@@ -32,8 +32,8 @@ ScoreTable GetScoredStudents(const Events& events, time_t score_time) {
                 tasks[current_event.student_name][current_event.task_name].second = false;
         }
     }
-    for (auto tasks_pair : tasks) {
-        for (auto task_info : tasks_pair.second) {
+    for (auto const &tasks_pair : tasks) {
+        for (auto const &task_info : tasks_pair.second) {
             if (task_info.second.first && !task_info.second.second) {
                 answer[tasks_pair.first].insert(task_info.first);
             }
