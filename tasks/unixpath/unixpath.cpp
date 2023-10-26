@@ -6,7 +6,7 @@ void CheckString(std::string& folder, std::vector<std::string>& folders) {
     if (folder == ".." && !folders.empty()) {
         folders.pop_back();
     }
-    if (folder == "" || folder == "." || folder == "..") {
+    if (folder.empty() || folder == "." || folder == "..") {
         return;
     }
     folders.push_back(folder);
@@ -21,7 +21,7 @@ std::string NormalizePath(std::string_view current_working_dir, std::string_view
             folders.back() += character;
         }
     }
-    std::string current_folder = "";
+    std::string current_folder;
     for (char character : path) {
         if (character == '/') {
             CheckString(current_folder, folders);
@@ -31,8 +31,8 @@ std::string NormalizePath(std::string_view current_working_dir, std::string_view
         }
     }
     CheckString(current_folder, folders);
-    std::string answer = "";
-    for (std::string folder : folders) {
+    std::string answer;
+    for (const std::string& folder : folders) {
         answer += "/" + folder;
     }
     if (answer.empty()) {
