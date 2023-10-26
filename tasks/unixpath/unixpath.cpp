@@ -14,11 +14,13 @@ void CheckString(std::string& folder, std::vector<std::string>& folders) {
 
 std::string NormalizePath(std::string_view current_working_dir, std::string_view path) {
     std::vector<std::string> folders;
-    for (char character : current_working_dir) {
-        if (character == '/') {
-            folders.push_back("");
-        } else {
-            folders.back() += character;
+    if (path[0] != '/') {
+        for (char character : current_working_dir) {
+            if (character == '/') {
+                folders.push_back("");
+            } else {
+                folders.back() += character;
+            }
         }
     }
     std::string current_folder;
