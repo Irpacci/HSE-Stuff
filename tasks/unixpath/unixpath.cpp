@@ -16,7 +16,7 @@ std::string NormalizePath(std::string_view current_working_dir, std::string_view
     std::vector<std::string> folders;
     for (char character : current_working_dir) {
         if (character == '/') {
-            folders.push_back(""); 
+            folders.push_back("");
         } else {
             folders.back() += character;
         }
@@ -25,7 +25,7 @@ std::string NormalizePath(std::string_view current_working_dir, std::string_view
     for (char character : path) {
         if (character == '/') {
             CheckString(current_folder, folders);
-            current_folder = "";       
+            current_folder = "";
         } else {
             current_folder += character;
         }
