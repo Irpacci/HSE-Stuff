@@ -10,19 +10,21 @@ int32_t DAYS_IN_YEAR = 365;
 
 int32_t BruteConvertion(const Date& date) {
     return date.day + date.month * DAYS_IN_MONTH + date.year * DAYS_IN_YEAR;
-} 
+}
 
 bool operator<(const Date& lhs, const Date& rhs) {
     return BruteConvertion(lhs) < BruteConvertion(rhs);
 }
 
-bool ApplicantsComparatorSort(std::pair<Applicant, size_t> &a, std::pair<Applicant, size_t> &b) {
-    std::tuple<int32_t, int32_t, std::string> a_data = {-(a.first.points), BruteConvertion(a.first.student.birth_date), a.first.student.name};
-    std::tuple<int32_t, int32_t, std::string> b_data = {-(b.first.points), BruteConvertion(b.first.student.birth_date), b.first.student.name};
+bool ApplicantsComparatorSort(std::pair<Applicant, size_t>& a, std::pair<Applicant, size_t>& b) {
+    std::tuple<int32_t, int32_t, std::string> a_data = {-(a.first.points), BruteConvertion(a.first.student.birth_date),
+                                                        a.first.student.name};
+    std::tuple<int32_t, int32_t, std::string> b_data = {-(b.first.points), BruteConvertion(b.first.student.birth_date),
+                                                        b.first.student.name};
     return a_data < b_data;
 }
 
-bool ApplicantsComparatorAnswer(const Student *a, const Student *b) {
+bool ApplicantsComparatorAnswer(const Student* a, const Student* b) {
     std::pair<std::string, int> a_data = {a->name, BruteConvertion(a->birth_date)};
     std::pair<std::string, int> b_data = {b->name, BruteConvertion(b->birth_date)};
     return a_data < b_data;
