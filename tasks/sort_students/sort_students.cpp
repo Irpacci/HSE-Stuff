@@ -3,14 +3,14 @@
 
 #include "sort_students.h"
 
-const int64_t DAYS_IN_MONTH = 31;
-const int64_t DAYS_IN_YEAR = 365;
+using RightDate = std::pair<int32_t, std::pair<int32_t, int32_t>>;
+using RightName = std::pair<std::string, std::string>;
 
 bool isLess(Student a, Student b, SortKind sortKind) {
-    std::pair<std::string, std::string> a_name = {a.last_name, a.name};
-    std::pair<std::string, std::string> b_name = {b.last_name, b.name};
-    int64_t a_date = a.birth_date.day + static_cast<int64_t>(a.birth_date.month) * DAYS_IN_MONTH + static_cast<int64_t>(a.birth_date.year) * DAYS_IN_YEAR;
-    int64_t b_date = b.birth_date.day + static_cast<int64_t>(b.birth_date.month) * DAYS_IN_MONTH + static_cast<int64_t>(b.birth_date.year) * DAYS_IN_YEAR;
+    RightName a_name = {a.last_name, a.name};
+    RightName b_name = {b.last_name, b.name};
+    RightDate a_date = {a.birth_date.year, {a.birth_date.month, a.birth_date.day}};
+    RightDate b_date = {b.birth_date.year, {b.birth_date.month, b.birth_date.day}};
     if (sortKind == SortKind::Name) {
         return std::make_pair(a_name, a_date) < std::make_pair(b_name, b_date);
     } else {
