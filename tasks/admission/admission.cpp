@@ -34,7 +34,7 @@ AdmissionTable FillUniversities(const std::vector<University>& universities, con
     AdmissionTable answer;
     size_t number_of_students = applicants.size();
     std::map<std::string, size_t> max_size;
-    for (auto const &university : universities) {
+    for (auto const& university : universities) {
         max_size[university.name] = university.max_students;
     }
     std::vector<std::pair<Applicant, size_t>> applicants_sorted;
@@ -42,8 +42,8 @@ AdmissionTable FillUniversities(const std::vector<University>& universities, con
         applicants_sorted.emplace_back(applicants[i], i);
     }
     std::sort(applicants_sorted.begin(), applicants_sorted.end(), ApplicantsComparatorSort);
-    for (auto const &applicant : applicants_sorted) {
-        for (auto const &wanted_university : applicant.first.wish_list) {
+    for (auto const& applicant : applicants_sorted) {
+        for (auto const& wanted_university : applicant.first.wish_list) {
             if (answer[wanted_university].size() < max_size[wanted_university]) {
                 answer[wanted_university].push_back(&applicants[applicant.second].student);
                 break;
