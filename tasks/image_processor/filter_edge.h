@@ -12,10 +12,6 @@ class EdgeFilter : public BaseFilter {
 public:
     explicit EdgeFilter(FilterSetting a) : threshold_{stold(a.parameters[0]) * MAX_INT8} {
     }
-    EdgeFilter() {
-    }
-    ~EdgeFilter() override {
-    }
     void Apply(BMPImage &image) override;
 
 private:

@@ -10,10 +10,6 @@ class BlurFilter : public BaseFilter {
 public:
     explicit BlurFilter(const FilterSetting& a) : sigma_{stold(a.parameters[0])} {
     }
-    BlurFilter() {
-    }
-    ~BlurFilter() override {
-    }
     void Apply(BMPImage& image) override;
     BaseFilter* CreateBlurFilter(const FilterSetting& setting) {
         return new BlurFilter(setting);

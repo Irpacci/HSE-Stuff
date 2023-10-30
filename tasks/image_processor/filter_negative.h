@@ -8,10 +8,6 @@ class NegativeFilter : public BaseFilter {
 public:
     explicit NegativeFilter(FilterSetting a) {
     }
-    NegativeFilter() {
-    }
-    ~NegativeFilter() override {
-    }
     void Apply(BMPImage &image) override;
 };
 

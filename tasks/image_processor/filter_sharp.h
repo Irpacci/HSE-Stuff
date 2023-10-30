@@ -8,10 +8,6 @@ class SharpFilter : public BaseFilter {
 public:
     explicit SharpFilter(FilterSetting a) {
     }
-    SharpFilter() {
-    }
-    ~SharpFilter() override {
-    }
     void Apply(BMPImage &image) override;
 };
 

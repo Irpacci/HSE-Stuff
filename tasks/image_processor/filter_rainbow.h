@@ -10,10 +10,6 @@ class RainbowFilter : public BaseFilter {
 public:
     explicit RainbowFilter(FilterSetting a) : rainbow_width_{std::stoi(a.parameters[0])} {
     }
-    RainbowFilter() {
-    }
-    ~RainbowFilter() override {
-    }
     void Apply(BMPImage &image) override;
 
 private:

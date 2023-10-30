@@ -7,10 +7,6 @@
 
 class FilterSetting {
 public:
-    FilterSetting(){};
-    ~FilterSetting(){};
-
-public:
     std::string filtername;
     std::vector<std::string> parameters;
 };

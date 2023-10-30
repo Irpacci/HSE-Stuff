@@ -8,7 +8,6 @@
 
 class BaseFilter {
 public:
-    BaseFilter(){};
     virtual ~BaseFilter(){};
 
 public:
