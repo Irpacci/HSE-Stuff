@@ -10,7 +10,11 @@ class Pipeline {
 public:
     void AddFilter(BaseFilter* iterator);
     void Apply(BMPImage& image);
-
+    ~Pipeline() {
+        for (auto x : filters_) {
+            delete x;
+        }
+    }
 private:
     std::vector<BaseFilter*> filters_;
 };
