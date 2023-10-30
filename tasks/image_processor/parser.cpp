@@ -3,8 +3,8 @@
 #include <iostream>
 
 void Parser::Parse(char* commands[], int32_t size) {
-    filename_ = FILENAME_PREFIX + commands[1];
-    output_ = FILENAME_PREFIX + commands[2];
+    filename_ = commands[1];
+    output_ = commands[2];
     FilterSetting current;
     for (int32_t i = 3; i < size; i++) {
         std::string current_command = commands[i];

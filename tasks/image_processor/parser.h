@@ -9,9 +9,6 @@
 
 class Parser {
 public:
-    const std::string FILENAME_PREFIX = "../tasks/image_processor/";
-
-public:
     void Parse(char* commands[], int32_t size);
     std::string& GetFilename();
     std::string& GetOutput();
