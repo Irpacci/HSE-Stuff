@@ -73,7 +73,7 @@ void BMPEditor::WriteImage() {
     image_.WriteBmp(output_);
 }
 
-void BMPEditor::GetCommands(char* commands[], int32_t size) {
+void BMPEditor::GetCommands(char *commands[], int32_t size) {
     parser_.Parse(commands, size);
     filename_ = parser_.GetFilename();
     filename_output_ = parser_.GetOutput();

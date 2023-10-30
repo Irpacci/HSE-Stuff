@@ -25,7 +25,7 @@ public:
 
     void CloseOutput();
 
-    void GetCommands(char* commands[], int32_t size);
+    void GetCommands(char *commands[], int32_t size);
     /// Читает открытый BMP файл
     void ReadImage();
 

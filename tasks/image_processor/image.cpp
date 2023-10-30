@@ -1,13 +1,13 @@
 #include "image.h"
 
-void BMPImage::ReadBmp(std::fstream& flow) {
+void BMPImage::ReadBmp(std::fstream &flow) {
     ReadBmpHeader(flow);
     ReadDibHeader(flow);
     flow.read(reinterpret_cast<char *>(&elsedata), bmp_header_.offset - 54);
     ReadPixelArray(flow);
 }
 
-void BMPImage::ReadBmpHeader(std::fstream& flow) {
+void BMPImage::ReadBmpHeader(std::fstream &flow) {
     // if (!file_) throw ...
     flow.read(reinterpret_cast<char *>(&bmp_header_), sizeof(BMPHeader));
     // if (!file_) throw ...
@@ -18,7 +18,7 @@ void BMPImage::ReadBmpHeader(std::fstream& flow) {
     }
 }
 
-void BMPImage::ReadDibHeader(std::fstream& flow) {
+void BMPImage::ReadDibHeader(std::fstream &flow) {
     // if (!file_) throw ...
     flow.read(reinterpret_cast<char *>(&dib_header_), sizeof(DIBHeader));
     // if (!file_) throw ...
@@ -26,7 +26,7 @@ void BMPImage::ReadDibHeader(std::fstream& flow) {
     // Проверяем корректность полей здесь... (bits_per_pixel)
 }
 
-void BMPImage::ReadPixelArray(std::fstream& flow) {
+void BMPImage::ReadPixelArray(std::fstream &flow) {
     RGBMatrix new_matrix(dib_header_.height, dib_header_.width, default_value);
     size_t size_of_padding = (4 - (dib_header_.width * 3) % 4) % 4;
     int32_t padding_collector;
@@ -37,7 +37,7 @@ void BMPImage::ReadPixelArray(std::fstream& flow) {
     pixel_array_ = new_matrix;
 }
 
-void BMPImage::WriteBmp(std::ofstream& flow) {
+void BMPImage::WriteBmp(std::ofstream &flow) {
     flow.write(reinterpret_cast<char *>(&bmp_header_), sizeof(BMPHeader));
     flow.write(reinterpret_cast<char *>(&dib_header_), sizeof(DIBHeader));
     flow.write(reinterpret_cast<char *>(&elsedata), bmp_header_.offset - 54);

@@ -80,7 +80,7 @@ public:
     }
 
     /// Returns the pointer at the backstage for some reasons and different purposes
-    const RGB* GetRawPtr() const {
+    const RGB *GetRawPtr() const {
         return _data;
     }
 
@@ -88,7 +88,7 @@ public:
         return row * _cols_num + col;
     }
 
-    RGB& GetElement(int32_t row, int32_t col) {
+    RGB &GetElement(int32_t row, int32_t col) {
         row = std::max(row, 0);
         row = std::min(row, static_cast<int32_t>(_rows_num) - 1);
         col = std::max(col, 0);
@@ -96,7 +96,7 @@ public:
         return _data[Offset(row, col)];
     }
 
-    const RGB& GetElement(int32_t row, int32_t col) const {
+    const RGB &GetElement(int32_t row, int32_t col) const {
         row = std::max(row, 0);
         row = std::min(row, static_cast<int32_t>(_rows_num) - 1);
         col = std::max(col, 0);
