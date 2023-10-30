@@ -2,42 +2,50 @@
 #include "rgbmatrix.h"
 #include "filter_grayscale.h"
 
-static float HueToRGB(float v1, float v2, float vH) {
-    if (vH < 0) {
-        vH++;
+const int32_t COEF = 6;
+const float COEF2 = 2.0f;
+
+static float HueToRGB(float v1, float v2, float v_h) {
+    if (v_h < 0) {
+        v_h++;
     }
-    if (vH > 1) {
-        vH--;
+    if (v_h > 1) {
+        v_h--;
     }
-    if ((6 * vH) < 1) {
-        return (v1 + (v2 - v1) * 6 * vH);
+    if ((COEF * v_h) < 1) {
+        return (v1 + (v2 - v1) * COEF * v_h);
     }
-    if ((2 * vH) < 1) {
+    if ((2 * v_h) < 1) {
         return v2;
     }
-    if ((3 * vH) < 2) {
-        return (v1 + (v2 - v1) * ((2.0f / 3) - vH) * 6);
+    if ((3 * v_h) < 2) {
+        return (v1 + (v2 - v1) * ((COEF2 / 3) - v_h) * 6);
     }
     return v1;
 }
 
-static RGB HSLToRGB(int32_t H, float S, float L) {
+const int32_t CIRCLE = 360;
+const int32_t MAX_INT8 = 255;
+const float HALF = 0.5;
+
+static RGB HSLToRGB(int32_t h, float s, float l) {
     unsigned char r = 0;
     unsigned char g = 0;
     unsigned char b = 0;
-    if (S == 0) {
-        r = g = b = (unsigned char)(L * 255);
+    if (s == 0) {
+        r = g = b = static_cast<unsigned char>(l * MAX_INT8);
     } else {
-        float v1, v2;
-        float hue = (float)H / 360;
-        v2 = (L < 0.5) ? (L * (1 + S)) : ((L + S) - (L * S));
-        v1 = 2 * L - v2;
-        r = (unsigned char)(255 * HueToRGB(v1, v2, hue + (1.0f / 3)));
-        g = (unsigned char)(255 * HueToRGB(v1, v2, hue));
-        b = (unsigned char)(255 * HueToRGB(v1, v2, hue - (1.0f / 3)));
+		float v2 = (l < HALF) ? (l * (1 + s)) : ((l + s) - (l * s));
+		float v1 = 2 * l - v2;
+        float hue = static_cast<float>(h) / CIRCLE;
+        r = static_cast<unsigned char>(MAX_INT8 * HueToRGB(v1, v2, hue + (1.0f / 3)));
+        g = static_cast<unsigned char>(MAX_INT8 * HueToRGB(v1, v2, hue));
+        b = static_cast<unsigned char>(MAX_INT8 * HueToRGB(v1, v2, hue - (1.0f / 3)));
     }
     return RGB(r, g, b);
 }
+
+
 
 void RainbowFilter::Apply(BMPImage &image) {
     int32_t height = image.GetHeight();
@@ -48,8 +56,8 @@ void RainbowFilter::Apply(BMPImage &image) {
     for (int32_t i = 0; i < height; i++) {
         for (int32_t j = 0; j < width; j++) {
             float intensity = image.GetElement(i, j).g;
-            intensity /= 256.0;
-            new_matrix[i][j] = HSLToRGB((j / rainbow_width_) % 360, intensity, intensity);
+            intensity /= (MAX_INT8 + 1);
+            new_matrix[i][j] = HSLToRGB((j / rainbow_width_) % CIRCLE, intensity, intensity);
         }
     }
     image.SetMatrix(new_matrix);

@@ -43,11 +43,11 @@ public:
         return pixel_array_.GetElement(row, col);
     }
 
-    size_t GetHeight() {
+    int32_t GetHeight() {
         return pixel_array_.GetRowsNum();
     }
 
-    size_t GetWidth() {
+    int32_t GetWidth() {
         return pixel_array_.GetColsNum();
     }
 

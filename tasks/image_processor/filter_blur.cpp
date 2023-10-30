@@ -6,6 +6,7 @@
 
 const long double ONE_OVER_2PI = 0.15915494;
 const long double ONE_OVER_E = 0.36787944;
+const int32_t MAX_INT8 = 255;
 
 void BlurFilter::Apply(BMPImage &image) {
     int32_t max_distance = ceil(sigma_ * 3);
@@ -41,9 +42,9 @@ void BlurFilter::Apply(BMPImage &image) {
                     new_b += end_fraction * current.b;
                 }
             }
-            uint8_t r = std::min(255, (int32_t)round(new_r));
-            uint8_t g = std::min(255, (int32_t)round(new_g));
-            uint8_t b = std::min(255, (int32_t)round(new_b));
+            uint8_t r = std::min(MAX_INT8, static_cast<int32_t>(round(new_r)));
+            uint8_t g = std::min(MAX_INT8, static_cast<int32_t>(round(new_g)));
+            uint8_t b = std::min(MAX_INT8, static_cast<int32_t>(round(new_b)));
             new_matrix[i][j] = RGB(r, g, b);
         }
     }

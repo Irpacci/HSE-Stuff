@@ -6,9 +6,11 @@
 #include "base_filter.h"
 #include "image.h"
 
+const double MAX_INT8 = 255.0;
+
 class EdgeFilter : public BaseFilter {
 public:
-    explicit EdgeFilter(FilterSetting a) : threshold_{stold(a.parameters[0]) * 255.0} {
+    explicit EdgeFilter(FilterSetting a) : threshold_{stold(a.parameters[0]) * MAX_INT8} {
     }
     EdgeFilter() {
     }

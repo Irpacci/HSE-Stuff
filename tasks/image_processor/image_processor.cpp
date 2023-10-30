@@ -1,5 +1,4 @@
 #include <cassert>
-#include <iostream>
 
 #include "bmp_editor.h"
 

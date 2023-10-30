@@ -83,7 +83,7 @@ void BMPEditor::GetCommands(char *commands[], int32_t size) {
     std::vector<FilterSetting> parsed = parser_.GetParsed();
     FilterFactory factory;
     Pipeline pipeline;
-    for (FilterSetting x : parsed) {
+    for (FilterSetting const &x : parsed) {
         pipeline.AddFilter(factory.Generate(x));
     }
     pipeline.Apply(image_);
