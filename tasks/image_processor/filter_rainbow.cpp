@@ -19,7 +19,7 @@ static float HueToRGB(float v1, float v2, float v_h) {
         return v2;
     }
     if ((3 * v_h) < 2) {
-        return (v1 + (v2 - v1) * ((COEF2 / 3) - v_h) * 6);
+        return (v1 + (v2 - v1) * ((COEF2 / 3) - v_h) * COEF);
     }
     return v1;
 }

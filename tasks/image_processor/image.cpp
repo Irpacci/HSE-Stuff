@@ -33,7 +33,8 @@ void BMPImage::ReadPixelArray(std::fstream &flow) {
     int32_t size_of_padding = (4 - (dib_header_.width * 3) % 4) % 4;
     int32_t padding_collector = 0;
     for (int32_t row_number = dib_header_.height - 1; row_number >= 0; row_number--) {
-        flow.read(reinterpret_cast<char *>(&new_matrix.GetElement(row_number, 0)), dib_header_.width * sizeof(RGB));
+        flow.read(reinterpret_cast<char *>(&new_matrix.GetElement(row_number, 0)),
+                  static_cast<std::streamsize>(dib_header_.width * sizeof(RGB)));
         flow.read(reinterpret_cast<char *>(&padding_collector), size_of_padding);
     }
     pixel_array_ = new_matrix;
@@ -44,9 +45,10 @@ void BMPImage::WriteBmp(std::ofstream &flow) {
     flow.write(reinterpret_cast<char *>(&dib_header_), sizeof(DIBHeader));
     flow.write(reinterpret_cast<char *>(&elsedata), bmp_header_.offset - BASIC_OFFSET);
     int32_t size_of_padding = (4 - (dib_header_.width * 3) % 4) % 4;
-    int32_t padding_collector;
+    int32_t padding_collector = 0;
     for (int32_t row_number = dib_header_.height - 1; row_number >= 0; row_number--) {
-        flow.write(reinterpret_cast<char *>(&pixel_array_.GetElement(row_number, 0)), dib_header_.width * sizeof(RGB));
+        flow.write(reinterpret_cast<char *>(&pixel_array_.GetElement(row_number, 0)),
+                  static_cast<std::streamsize>(dib_header_.width * sizeof(RGB)));
         flow.write(reinterpret_cast<char *>(&padding_collector), size_of_padding);
     }
 }

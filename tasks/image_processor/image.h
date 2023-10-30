@@ -51,7 +51,7 @@ public:
         return pixel_array_.GetColsNum();
     }
 
-    uint32_t const GetSize() {
+    uint32_t const GetSize() const {
         return bmp_header_.size;
     }
 
