@@ -48,7 +48,7 @@ void BMPImage::WriteBmp(std::ofstream &flow) {
     int32_t padding_collector = 0;
     for (int32_t row_number = dib_header_.height - 1; row_number >= 0; row_number--) {
         flow.write(reinterpret_cast<char *>(&pixel_array_.GetElement(row_number, 0)),
-                  static_cast<std::streamsize>(dib_header_.width * sizeof(RGB)));
+                   static_cast<std::streamsize>(dib_header_.width * sizeof(RGB)));
         flow.write(reinterpret_cast<char *>(&padding_collector), size_of_padding);
     }
 }
