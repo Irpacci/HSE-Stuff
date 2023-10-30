@@ -1,4 +1,4 @@
-  group: 03-homework-three
+- group: 03-homework-three
   start: 02-10-2023 00:00
   deadline: 18-10-2023 23:59
   tasks:
@@ -56,4 +56,5 @@
   tasks:
     - task: multiplication
       score: 100
+
 
