@@ -1,7 +1,7 @@
 #include "filter_negative.h"
 #include "rgbmatrix.h"
 
-const int32_t MAX_INT8 = 255; 
+const int32_t MAX_INT8 = 255;
 
 void NegativeFilter::Apply(BMPImage &image) {
     int32_t height = image.GetHeight();

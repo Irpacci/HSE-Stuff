@@ -21,9 +21,9 @@ void Parser::Parse(char* commands[], int32_t size) {
     if (!current.filtername.empty()) {
         filter_commands_.push_back(current);
     }
-    for (auto const &x : filter_commands_) {
+    for (auto const& x : filter_commands_) {
         std::cout << "name:" << ' ' << x.filtername << std::endl << "parameters: ";
-        for (auto const &h : x.parameters) {
+        for (auto const& h : x.parameters) {
             std::cout << h << ' ';
         }
         std::cout << std::endl;

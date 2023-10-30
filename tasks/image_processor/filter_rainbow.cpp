@@ -35,8 +35,8 @@ static RGB HSLToRGB(int32_t h, float s, float l) {
     if (s == 0) {
         r = g = b = static_cast<unsigned char>(l * MAX_INT8);
     } else {
-		float v2 = (l < HALF) ? (l * (1 + s)) : ((l + s) - (l * s));
-		float v1 = 2 * l - v2;
+        float v2 = (l < HALF) ? (l * (1 + s)) : ((l + s) - (l * s));
+        float v1 = 2 * l - v2;
         float hue = static_cast<float>(h) / CIRCLE;
         r = static_cast<unsigned char>(MAX_INT8 * HueToRGB(v1, v2, hue + (1.0f / 3)));
         g = static_cast<unsigned char>(MAX_INT8 * HueToRGB(v1, v2, hue));
@@ -44,8 +44,6 @@ static RGB HSLToRGB(int32_t h, float s, float l) {
     }
     return RGB(r, g, b);
 }
-
-
 
 void RainbowFilter::Apply(BMPImage &image) {
     int32_t height = image.GetHeight();

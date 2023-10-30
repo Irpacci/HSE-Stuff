@@ -8,7 +8,6 @@ const RGB WHITE(255, 255, 255);
 void EdgeFilter::Apply(BMPImage &image) {
     GrayscaleFilter f;
     f.Apply(image);
-    
     int32_t height = image.GetHeight();
     int32_t width = image.GetWidth();
     RGBMatrix new_matrix(height, width, RGB());
