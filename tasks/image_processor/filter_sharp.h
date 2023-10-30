@@ -6,11 +6,11 @@
 
 class SharpFilter : public BaseFilter {
 public:
-    SharpFilter(FilterSetting a) {
+    explicit SharpFilter(FilterSetting a) {
     }
     SharpFilter() {
     }
-    ~SharpFilter() {
+    ~SharpFilter() override {
     }
     void Apply(BMPImage &image) override;
 };

@@ -11,20 +11,20 @@ public:
         friend class RGBMatrix;
 
     public:
-        RGB &operator[](size_t col) {
+        RGB &operator[](int32_t col) {
             return _owner->GetElement(_number, col);
         }
 
-        const RGB &operator[](size_t col) const {
+        const RGB &operator[](int32_t col) const {
             return _owner->GetElement(_number, col);
         }
 
     protected:
-        RGBRow(size_t number, RGBMatrix *owner) : _number{number}, _owner{owner} {
+        RGBRow(int32_t number, RGBMatrix *owner) : _number{number}, _owner{owner} {
         }
 
     protected:
-        size_t _number;
+        int32_t _number;
         RGBMatrix *_owner;
     };
 
@@ -32,16 +32,16 @@ public:
         friend class RGBMatrix;
 
     public:
-        const RGB &operator[](size_t col) const {
+        const RGB &operator[](int32_t col) const {
             return _owner->GetElement(_number, col);
         }
 
     protected:
-        ConstRGBRow(size_t number, const RGBMatrix *owner) : _number{number}, _owner{owner} {
+        ConstRGBRow(int32_t number, const RGBMatrix *owner) : _number{number}, _owner{owner} {
         }
 
     protected:
-        size_t _number;
+        int32_t _number;
         const RGBMatrix *_owner;
     };
 
@@ -49,7 +49,7 @@ public:
     RGBMatrix() : _rows_num{0}, _cols_num{0}, _data{nullptr} {
     }
 
-    RGBMatrix(size_t rows_num, size_t cols_num, RGB default_value = RGB{});
+    RGBMatrix(int32_t rows_num, int32_t cols_num, RGB default_value = RGB{});
 
     RGBMatrix(const RGBMatrix &origin);
 
@@ -61,21 +61,21 @@ public:
 
     RGBMatrix &operator=(RGBMatrix &&rhs);
 
-    RGBRow operator[](size_t row) {
+    RGBRow operator[](int32_t row) {
         return RGBRow{row, this};
     }
 
-    ConstRGBRow operator[](size_t row) const {
+    ConstRGBRow operator[](int32_t row) const {
         return ConstRGBRow{row, this};
     }
 
     /// Returns number of rows of the matrix
-    size_t GetRowsNum() const {
+    int32_t GetRowsNum() const {
         return _rows_num;
     }
 
     /// Returns number of columns of the matrix4
-    size_t GetColsNum() const {
+    int32_t GetColsNum() const {
         return _cols_num;
     }
 
@@ -84,7 +84,7 @@ public:
         return _data;
     }
 
-    size_t Offset(size_t row, size_t col) const {
+    int32_t Offset(int32_t row, int32_t col) const {
         return row * _cols_num + col;
     }
 
@@ -104,7 +104,7 @@ public:
         return _data[Offset(row, col)];
     }
 
-    size_t GetRawDataSize() const {
+    int32_t GetRawDataSize() const {
         return _rows_num * _cols_num;
     }
 
@@ -114,8 +114,8 @@ protected:
     static void Swap(RGBMatrix &lhs, RGBMatrix &rhs) noexcept;
 
 protected:
-    size_t _rows_num;
-    size_t _cols_num;
+    int32_t _rows_num;
+    int32_t _cols_num;
     RGB *_data;
 };
 

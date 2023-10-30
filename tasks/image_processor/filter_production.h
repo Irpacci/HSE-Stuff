@@ -13,7 +13,7 @@
 #include "filter_sharp.h"
 #include "filter_rainbow.h"
 
-typedef BaseFilter* (*FilterProdPtr)(FilterSetting);
+using FilterProdPtr = BaseFilter *(*)(FilterSetting);
 
 BaseFilter* CreateBlurFilter(FilterSetting setting) {
     return new BlurFilter(setting);

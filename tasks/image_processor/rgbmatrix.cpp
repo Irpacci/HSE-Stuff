@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <tuple>
 
-RGBMatrix::RGBMatrix(size_t rows_num, size_t cols_num, RGB default_value) : RGBMatrix() {
+RGBMatrix::RGBMatrix(int32_t rows_num, int32_t cols_num, RGB default_value) : RGBMatrix() {
     if (rows_num == 0 && cols_num == 0) {
         return;
     }

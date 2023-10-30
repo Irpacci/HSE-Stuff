@@ -8,11 +8,11 @@
 
 class RainbowFilter : public BaseFilter {
 public:
-    RainbowFilter(FilterSetting a) : rainbow_width_{std::stoi(a.parameters[0])} {
+    explicit RainbowFilter(FilterSetting a) : rainbow_width_{std::stoi(a.parameters[0])} {
     }
     RainbowFilter() {
     }
-    ~RainbowFilter() {
+    ~RainbowFilter() override {
     }
     void Apply(BMPImage &image) override;
 

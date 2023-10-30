@@ -6,11 +6,13 @@
 
 #include "rgbmatrix.h"
 
+const int32_t EXTRA_SIZE = 256;
+
 class BMPImage {
 public:
     static const uint16_t BMP_SIGNATURE = 0x4D42;  // BM
     RGB default_value = {0, 0, 0};
-    char elsedata[256];
+    char elsedata[EXTRA_SIZE];
     struct BMPHeader {
         uint16_t signature;
         uint32_t size;
@@ -41,13 +43,6 @@ public:
         return pixel_array_.GetElement(row, col);
     }
 
-    int32_t Gh() {
-        return dib_header_.height;
-    }
-    int32_t Gw() {
-        return dib_header_.width;
-    }
-
     size_t GetHeight() {
         return pixel_array_.GetRowsNum();
     }
@@ -56,7 +51,7 @@ public:
         return pixel_array_.GetColsNum();
     }
 
-    uint32_t GetSize() {
+    uint32_t const GetSize() {
         return bmp_header_.size;
     }
 

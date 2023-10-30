@@ -8,11 +8,11 @@
 
 class CropFilter : public BaseFilter {
 public:
-    CropFilter(FilterSetting a) : new_height_{stoi(a.parameters[1])}, new_width_{stoi(a.parameters[0])} {
+    explicit CropFilter(FilterSetting a) : new_height_{stoi(a.parameters[1])}, new_width_{stoi(a.parameters[0])} {
     }
     CropFilter() {
     }
-    ~CropFilter() {
+    ~CropFilter() override {
     }
     void Apply(BMPImage &image) override;
 

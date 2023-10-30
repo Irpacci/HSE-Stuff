@@ -12,7 +12,7 @@ public:
     void Apply(BMPImage& image);
 
 private:
-    std::vector<BaseFilter*> filters;
+    std::vector<BaseFilter*> filters_;
 };
 
 #endif
