@@ -8,6 +8,8 @@ class GrayscaleFilter : public BaseFilter {
 public:
     explicit GrayscaleFilter(FilterSetting a) {
     }
+    GrayscaleFilter() {
+    }
     void Apply(BMPImage &image) override;
 };
 
