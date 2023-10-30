@@ -15,6 +15,7 @@ public:
             delete x;
         }
     }
+
 private:
     std::vector<BaseFilter*> filters_;
 };
