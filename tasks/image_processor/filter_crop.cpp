@@ -16,7 +16,8 @@ void CropFilter::Apply(BMPImage &image) {
         }
     }
     size_of_padding = (4 - (width * 3) % 4) % 4;
-    image.SetSize((size_of_padding + width) * height);
+    size += (size_of_padding + width) * height;
+    image.SetSize(size);
     image.SetHeight(height);
     image.SetWidth(width);
     image.SetMatrix(new_matrix);

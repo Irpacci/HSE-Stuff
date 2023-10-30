@@ -42,8 +42,8 @@ void BlurFilter::Apply(BMPImage &image) {
                 }
             }
             uint8_t r = std::min(255, (int32_t)round(new_r));
-            uint8_t g = std::min(255, (int32_t)round(new_r));
-            uint8_t b = std::min(255, (int32_t)round(new_r));
+            uint8_t g = std::min(255, (int32_t)round(new_g));
+            uint8_t b = std::min(255, (int32_t)round(new_b));
             new_matrix[i][j] = RGB(r, g, b);
         }
     }
